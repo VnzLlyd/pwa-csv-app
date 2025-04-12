@@ -18,19 +18,25 @@
       "dest": "/manifest.json",
       "headers": {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=0, must-revalidate"
       }
     },
     {
       "src": "/service-worker.js",
       "dest": "/service-worker.js",
       "headers": {
-        "Cache-Control": "no-cache"
+        "Content-Type": "application/javascript",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Service-Worker-Allowed": "/"
       }
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/index.html",
+      "headers": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.vercel.app;"
+      }
     }
   ],
   "headers": [
