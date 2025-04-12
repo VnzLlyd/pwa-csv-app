@@ -11,6 +11,14 @@
   ],
   "routes": [
     {
+      "src": "/manifest.json",
+      "dest": "/manifest.json",
+      "headers": {
+        "Content-Type": "application/json",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
       "src": "/service-worker.js",
       "dest": "/service-worker.js",
       "headers": {
